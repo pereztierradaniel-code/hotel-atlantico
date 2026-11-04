@@ -83,6 +83,125 @@
         </figure>
       </div>
     </section>
+
+    <!-- Acceso a las habitaciones -->
+    <section class="section section--tinted" id="habitaciones" aria-labelledby="rooms-title">
+      <div class="container">
+        <div class="section__header">
+          <p class="eyebrow eyebrow--dark">Habitaciones</p>
+          <h2 id="rooms-title" class="section__title">Descansa con el mar cerca</h2>
+          <p class="section__lead">Tres categorías de habitación pensadas para el descanso. Pulsa en cada una para ver todos sus detalles.</p>
+        </div>
+
+        <!-- Cada tarjeta abre su ficha (ventana emergente) con script.js -->
+        <ul class="room-grid" role="list">
+          <li class="room-card">
+            <div class="room-card__media">
+              <img class="room-card__image"
+                   src="assets/images/habitacion%20estandar"
+                   alt="Habitación estándar con cama de matrimonio, butaca y ventanal con cortinas"
+                   width="1500" height="844"
+                   loading="lazy">
+            </div>
+            <div class="room-card__body">
+              <h3 class="room-card__title">Habitación estándar</h3>
+              <p class="room-card__summary">Habitación confortable con Wi-Fi, baño privado y climatización.</p>
+              <p class="room-card__price">Desde <strong>95 €</strong>/noche</p>
+              <button class="room-card__more" type="button" data-room="room-estandar" aria-haspopup="dialog">
+                Ver detalles<span class="visually-hidden"> de la habitación estándar</span>
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg>
+              </button>
+            </div>
+          </li>
+          <li class="room-card">
+            <div class="room-card__media">
+              <img class="room-card__image"
+                   src="assets/images/habitacion%20superior"
+                   alt="Habitación superior con cama de matrimonio, zona de escritorio y ventanales panorámicos"
+                   width="1200" height="800"
+                   loading="lazy">
+            </div>
+            <div class="room-card__body">
+              <h3 class="room-card__title">Habitación superior</h3>
+              <p class="room-card__summary">Mayor amplitud, zona de descanso y vistas exteriores.</p>
+              <p class="room-card__price">Desde <strong>135 €</strong>/noche</p>
+              <button class="room-card__more" type="button" data-room="room-superior" aria-haspopup="dialog">
+                Ver detalles<span class="visually-hidden"> de la habitación superior</span>
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg>
+              </button>
+            </div>
+          </li>
+          <li class="room-card">
+            <div class="room-card__media">
+              <img class="room-card__image"
+                   src="assets/images/suite%20con%20vistas%20al%20mar"
+                   alt="Suite con cama de matrimonio y balcón acristalado con vistas al mar"
+                   width="1600" height="1066"
+                   loading="lazy">
+            </div>
+            <div class="room-card__body">
+              <h3 class="room-card__title">Suite con vistas al mar</h3>
+              <p class="room-card__summary">Alojamiento exclusivo con vistas al océano y zona de estar.</p>
+              <p class="room-card__price">Desde <strong>185 €</strong>/noche</p>
+              <button class="room-card__more" type="button" data-room="room-suite" aria-haspopup="dialog">
+                Ver detalles<span class="visually-hidden"> de la suite con vistas al mar</span>
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg>
+              </button>
+            </div>
+          </li>
+        </ul>
+
+        <p class="note">Precios orientativos por habitación y noche, IVA incluido. Desayuno incluido en determinadas tarifas.</p>
+
+        <div class="section__actions">
+          <a class="btn btn--primary" href="#contacto" data-contact>Consultar disponibilidad</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Acceso a los servicios -->
+    <section class="section" id="servicios" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section__header">
+          <p class="eyebrow eyebrow--dark">Servicios</p>
+          <h2 id="services-title" class="section__title">Todo lo necesario para tu estancia</h2>
+        </div>
+
+        <div class="services">
+          <article class="feature" id="restaurante" aria-labelledby="restaurant-title">
+            <img class="feature__image"
+                 src="assets/images/restaurante"
+                 alt="Comedor del restaurante con mesas vestidas y vistas a la bahía de A Coruña y la Torre de Hércules"
+                 width="1706" height="960"
+                 loading="lazy">
+            <div class="feature__body">
+              <h3 id="restaurant-title" class="feature__title">Restaurante de cocina gallega</h3>
+              <p>Los sabores de Galicia en un comedor abierto al océano. Desayuno disponible por 15 € por persona.</p>
+            </div>
+          </article>
+
+          <ul class="service-list" role="list">
+            <li class="service-list__item">
+              <h3 class="service-list__title">Recepción 24 horas</h3>
+              <p>Atención personalizada a cualquier hora. <span lang="en">English spoken</span>.</p>
+            </li>
+            <li class="service-list__item">
+              <h3 class="service-list__title">Wi-Fi gratuito</h3>
+              <p>Conexión gratuita durante toda tu estancia.</p>
+            </li>
+            <li class="service-list__item">
+              <h3 class="service-list__title">Parking</h3>
+              <p>15 € al día, sujeto a disponibilidad.</p>
+            </li>
+            <li class="service-list__item">
+              <h3 class="service-list__title">Terraza con vistas</h3>
+              <p>Un espacio al aire libre con vistas al océano.</p>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
   </main>
 
   <!-- Pie de página con información de contacto -->
