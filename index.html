@@ -8,6 +8,7 @@
   <meta name="theme-color" content="#123B50">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23123B50'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' text-anchor='middle' fill='%23D5B98C'%3EA%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add("js");</script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -151,6 +152,130 @@
           </li>
         </ul>
 
+        <!-- Servicios y horarios comunes: script.js los copia en cada ficha -->
+        <template id="room-extras">
+          <h3 class="room-dialog__subtitle">Servicios del hotel</h3>
+          <ul class="room-dialog__services" role="list">
+            <li><strong>Wi-Fi gratuito</strong><span>Conexión durante toda tu estancia</span></li>
+            <li><strong>Recepción 24 horas</strong><span>Atención personalizada a cualquier hora</span></li>
+            <li><strong>Restaurante</strong><span>Cocina gallega</span></li>
+            <li><strong>Desayuno</strong><span>15 € por persona; incluido en determinadas tarifas</span></li>
+            <li><strong>Parking</strong><span>15 € al día, sujeto a disponibilidad</span></li>
+            <li><strong>Terraza con vistas al mar</strong><span>Un espacio al aire libre frente al océano</span></li>
+          </ul>
+
+          <h3 class="room-dialog__subtitle">Horarios</h3>
+          <dl class="room-dialog__times">
+            <div>
+              <dt>Entrada (check-in)</dt>
+              <dd>Desde las 15:00</dd>
+            </div>
+            <div>
+              <dt>Salida (check-out)</dt>
+              <dd>Hasta las 12:00</dd>
+            </div>
+          </dl>
+
+          <p class="room-dialog__note">Precio orientativo por habitación y noche, IVA incluido. No se admiten mascotas.</p>
+        </template>
+
+        <!-- Fichas de cada habitación -->
+        <dialog class="room-dialog" id="room-estandar" aria-labelledby="room-estandar-title">
+          <form class="room-dialog__close-bar" method="dialog">
+            <button class="room-dialog__close" type="submit" aria-label="Cerrar la ficha">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+          </form>
+          <div class="room-dialog__inner">
+            <img class="room-dialog__image"
+                 src="assets/images/habitacion%20estandar"
+                 alt="Habitación estándar con cama de matrimonio, butaca y ventanal con cortinas"
+                 width="1500" height="844"
+                 loading="lazy">
+            <div class="room-dialog__body">
+              <p class="eyebrow eyebrow--dark">Habitación</p>
+              <h2 id="room-estandar-title" class="room-dialog__title">Habitación estándar</h2>
+              <p class="room-dialog__price">Desde <strong>95 €</strong>/noche</p>
+              <p class="room-dialog__lead">Una habitación confortable con todo lo necesario para descansar tras un día en A Coruña.</p>
+
+              <h3 class="room-dialog__subtitle">La habitación</h3>
+              <ul class="room-dialog__features" role="list">
+                <li>Wi-Fi gratuito</li>
+                <li>Baño privado</li>
+                <li>Climatización</li>
+              </ul>
+
+              <div data-room-extras></div>
+
+              <a class="btn btn--primary room-dialog__cta" href="#contacto" data-contact="la habitación estándar">Consultar disponibilidad</a>
+            </div>
+          </div>
+        </dialog>
+
+        <dialog class="room-dialog" id="room-superior" aria-labelledby="room-superior-title">
+          <form class="room-dialog__close-bar" method="dialog">
+            <button class="room-dialog__close" type="submit" aria-label="Cerrar la ficha">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+          </form>
+          <div class="room-dialog__inner">
+            <img class="room-dialog__image"
+                 src="assets/images/habitacion%20superior"
+                 alt="Habitación superior con cama de matrimonio, zona de escritorio y ventanales panorámicos"
+                 width="1200" height="800"
+                 loading="lazy">
+            <div class="room-dialog__body">
+              <p class="eyebrow eyebrow--dark">Habitación</p>
+              <h2 id="room-superior-title" class="room-dialog__title">Habitación superior</h2>
+              <p class="room-dialog__price">Desde <strong>135 €</strong>/noche</p>
+              <p class="room-dialog__lead">Más espacio para ti, con una zona de descanso propia y vistas al exterior.</p>
+
+              <h3 class="room-dialog__subtitle">La habitación</h3>
+              <ul class="room-dialog__features" role="list">
+                <li>Mayor amplitud</li>
+                <li>Zona de descanso</li>
+                <li>Vistas exteriores</li>
+              </ul>
+
+              <div data-room-extras></div>
+
+              <a class="btn btn--primary room-dialog__cta" href="#contacto" data-contact="la habitación superior">Consultar disponibilidad</a>
+            </div>
+          </div>
+        </dialog>
+
+        <dialog class="room-dialog" id="room-suite" aria-labelledby="room-suite-title">
+          <form class="room-dialog__close-bar" method="dialog">
+            <button class="room-dialog__close" type="submit" aria-label="Cerrar la ficha">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+          </form>
+          <div class="room-dialog__inner">
+            <img class="room-dialog__image"
+                 src="assets/images/suite%20con%20vistas%20al%20mar"
+                 alt="Suite con cama de matrimonio y balcón acristalado con vistas al mar"
+                 width="1600" height="1066"
+                 loading="lazy">
+            <div class="room-dialog__body">
+              <p class="eyebrow eyebrow--dark">Suite</p>
+              <h2 id="room-suite-title" class="room-dialog__title">Suite con vistas al mar</h2>
+              <p class="room-dialog__price">Desde <strong>185 €</strong>/noche</p>
+              <p class="room-dialog__lead">Nuestro alojamiento más exclusivo: el océano Atlántico al otro lado de la ventana.</p>
+
+              <h3 class="room-dialog__subtitle">La suite</h3>
+              <ul class="room-dialog__features" role="list">
+                <li>Vistas al océano</li>
+                <li>Zona de estar</li>
+                <li>Alojamiento exclusivo</li>
+              </ul>
+
+              <div data-room-extras></div>
+
+              <a class="btn btn--primary room-dialog__cta" href="#contacto" data-contact="la suite con vistas al mar">Consultar disponibilidad</a>
+            </div>
+          </div>
+        </dialog>
+
         <p class="note">Precios orientativos por habitación y noche, IVA incluido. Desayuno incluido en determinadas tarifas.</p>
 
         <div class="section__actions">
@@ -203,6 +328,86 @@
       </div>
     </section>
   </main>
+
+  <!-- Formulario de contacto (ventana emergente). Los botones «Consultar
+       disponibilidad» lo abren con script.js; sin JS llevan al pie de contacto.
+       No se envía a ningún servidor: la confirmación es ficticia. -->
+  <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-title">
+    <form class="room-dialog__close-bar" method="dialog">
+      <button class="room-dialog__close" type="submit" aria-label="Cerrar el formulario">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </form>
+
+    <div class="contact-dialog__body">
+      <p class="eyebrow eyebrow--dark">Contacto</p>
+      <h2 id="contact-title" class="contact-dialog__title">Consultar disponibilidad</h2>
+      <p class="contact-dialog__lead">Cuéntanos qué necesitas y te responderemos lo antes posible. Los campos marcados con <span aria-hidden="true">*</span><span class="visually-hidden">asterisco</span> son obligatorios.</p>
+
+      <form class="contact-form" id="contact-form" novalidate>
+        <p class="contact-form__summary field--full" id="contact-summary" role="alert" hidden></p>
+
+        <div class="field">
+          <label class="field__label" for="cf-name">Nombre <span class="field__required" aria-hidden="true">*</span></label>
+          <input class="field__input" id="cf-name" name="name" type="text" autocomplete="name" required aria-describedby="cf-name-error" autofocus>
+          <p class="field__error" id="cf-name-error"></p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="cf-email">Correo electrónico <span class="field__required" aria-hidden="true">*</span></label>
+          <input class="field__input" id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="cf-email-error">
+          <p class="field__error" id="cf-email-error"></p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="cf-phone">Teléfono <span class="field__optional">(opcional)</span></label>
+          <input class="field__input" id="cf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="cf-reason">Motivo de consulta</label>
+          <select class="field__input field__select" id="cf-reason" name="reason">
+            <option value="general">Consulta general</option>
+            <option value="restaurante">Información sobre el restaurante</option>
+            <option value="disponibilidad" selected>Solicitud de disponibilidad</option>
+            <option value="otros">Otros</option>
+          </select>
+        </div>
+
+        <div class="field field--full">
+          <label class="field__label" for="cf-message">Mensaje <span class="field__required" aria-hidden="true">*</span></label>
+          <textarea class="field__input field__textarea" id="cf-message" name="message" rows="5" required aria-describedby="cf-message-error"></textarea>
+          <p class="field__error" id="cf-message-error"></p>
+        </div>
+
+        <div class="field field--full field--check">
+          <input class="field__checkbox" id="cf-privacy" name="privacy" type="checkbox" required aria-describedby="cf-privacy-error">
+          <label for="cf-privacy">He leído y acepto la política de privacidad: mis datos solo se usarán para responder a esta consulta. <span class="field__required" aria-hidden="true">*</span></label>
+          <p class="field__error" id="cf-privacy-error"></p>
+          <details class="privacy-info">
+            <summary>Leer la política de privacidad</summary>
+            <p>Responsable: Hotel Atlántico, Avenida del Mar, 25, A Coruña. Finalidad: responder a tu consulta. Tus datos no se ceden a terceros.</p>
+            <p>Esta web es una demostración: el formulario no guarda ni envía ningún dato.</p>
+          </details>
+        </div>
+
+        <div class="field--full contact-form__actions">
+          <button class="btn btn--primary btn--large" type="submit">Enviar consulta</button>
+        </div>
+      </form>
+
+      <!-- Confirmación ficticia: se muestra en lugar del formulario -->
+      <div class="contact-success" id="contact-success" role="status" aria-live="polite" tabindex="-1" hidden>
+        <svg class="contact-success__icon" aria-hidden="true" width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/><path d="M15 24.5l6 6 12-13" stroke="currentColor" stroke-width="1.75"/></svg>
+        <h3 class="contact-success__title">¡Gracias<span data-success-name></span>!</h3>
+        <p>Hemos recibido tu consulta y te responderemos en el correo que nos has indicado.</p>
+        <p class="contact-success__note">Esta web es una demostración: el mensaje no se ha enviado a ningún servidor.</p>
+        <form method="dialog">
+          <button class="btn btn--outline" type="submit">Cerrar</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
 
   <!-- Pie de página con información de contacto -->
   <footer class="site-footer" id="contacto">

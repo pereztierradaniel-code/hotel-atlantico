@@ -660,6 +660,408 @@ html:not(.js) .room-card__more {
   display: none;
 }
 
+/* ---------- Ficha de habitación (ventana emergente) ---------- */
+.room-dialog {
+  width: calc(100% - var(--space-4));
+  max-width: 64rem;
+  max-height: calc(100% - var(--space-4));
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* Animación y fondo comunes a la ficha y al formulario de contacto */
+.room-dialog[open],
+.contact-dialog[open] {
+  animation: dialog-in 0.35s ease-out both;
+}
+
+.room-dialog::backdrop,
+.contact-dialog::backdrop {
+  background-color: rgba(18, 59, 80, 0.72);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.room-dialog[open]::backdrop,
+.contact-dialog[open]::backdrop {
+  animation: backdrop-in 0.35s ease-out both;
+}
+
+/* Con una ventana abierta la página de detrás no se desplaza */
+body:has(.room-dialog[open], .contact-dialog[open]) {
+  overflow: hidden;
+}
+
+/* Barra de altura cero y fija arriba: el botón de cerrar sigue visible al bajar */
+.room-dialog__close-bar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  height: 0;
+}
+
+.room-dialog__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin: var(--space-3);
+  padding: 0;
+  border: 1px solid rgba(213, 185, 140, 0.6);
+  border-radius: 50%;
+  background-color: rgba(245, 242, 235, 0.92);
+  color: var(--color-ocean);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.room-dialog__close:hover {
+  background-color: var(--color-champagne);
+}
+
+.room-dialog__inner {
+  display: grid;
+}
+
+.room-dialog__image {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.room-dialog__body {
+  padding: var(--space-6) var(--space-5);
+}
+
+.room-dialog__title {
+  margin-bottom: var(--space-2);
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+}
+
+.room-dialog__price {
+  color: var(--color-text-muted);
+}
+
+.room-dialog__price strong {
+  color: var(--color-ocean);
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.room-dialog__lead {
+  margin-bottom: var(--space-6);
+  font-size: 1.0625rem;
+}
+
+.room-dialog__subtitle {
+  margin: var(--space-6) 0 var(--space-3);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-accent-dark);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* El primer apartado ya va separado por la entradilla */
+.room-dialog__lead + .room-dialog__subtitle {
+  margin-top: 0;
+}
+
+.room-dialog__features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.room-dialog__features li {
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-champagne);
+  border-radius: 2rem;
+  background-color: var(--color-ivory);
+  color: var(--color-ocean);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.room-dialog__services {
+  display: grid;
+  gap: var(--space-3) var(--space-5);
+}
+
+.room-dialog__services li {
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--color-champagne);
+  line-height: 1.4;
+}
+
+.room-dialog__services strong {
+  color: var(--color-ocean);
+  font-weight: 600;
+}
+
+.room-dialog__services span {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.room-dialog__times {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  margin: 0;
+}
+
+.room-dialog__times dt {
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+}
+
+.room-dialog__times dd {
+  margin: 0;
+  color: var(--color-ocean);
+  font-family: var(--font-serif);
+  font-size: 1.375rem;
+  line-height: 1.2;
+}
+
+.room-dialog__note {
+  margin: var(--space-5) 0;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+}
+
+.room-dialog__cta {
+  width: 100%;
+}
+
+@keyframes dialog-in {
+  from { opacity: 0; transform: translateY(1.5rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes backdrop-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ---------- Formulario de contacto (ventana emergente) ---------- */
+.contact-dialog {
+  width: calc(100% - var(--space-4));
+  max-width: 44rem;
+  max-height: calc(100% - var(--space-4));
+  padding: 0;
+  border: 0;
+  border-top: 4px solid var(--color-champagne);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.contact-dialog__body {
+  padding: var(--space-6) var(--space-5);
+}
+
+.contact-dialog__title {
+  margin-bottom: var(--space-3);
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+}
+
+.contact-dialog__lead {
+  margin-bottom: var(--space-6);
+  color: var(--color-text-muted);
+}
+
+.contact-form {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.field__label {
+  color: var(--color-ocean);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.field__required {
+  color: var(--color-accent-dark);
+}
+
+.field__optional {
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.field__input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid #B9B2A4;
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field__input:hover {
+  border-color: var(--color-ocean);
+}
+
+.field__input:focus-visible {
+  outline: none;
+  border-color: var(--color-ocean);
+  box-shadow: 0 0 0 3px rgba(18, 59, 80, 0.2);
+}
+
+.field__textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+/* Flecha propia del selector, igual en todos los navegadores */
+.field__select {
+  padding-right: var(--space-7);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3 6l5 5 5-5' stroke='%23123B50' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-position: right var(--space-3) center;
+  background-repeat: no-repeat;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Errores: borde, texto e icono (no solo color) */
+.field__input[aria-invalid="true"] {
+  border-color: var(--color-error);
+  background-color: var(--color-error-bg);
+}
+
+.field__input[aria-invalid="true"]:focus-visible {
+  box-shadow: 0 0 0 3px rgba(179, 38, 30, 0.2);
+}
+
+.field__error {
+  margin: 0;
+  color: var(--color-error);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.field__error:empty {
+  display: none;
+}
+
+.field__error::before {
+  content: "⚠ ";
+}
+
+.field--check {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: var(--space-2) var(--space-3);
+  font-size: 0.875rem;
+}
+
+.field--check .field__error {
+  grid-column: 1 / -1;
+}
+
+.field__checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0.15rem 0 0;
+  accent-color: var(--color-ocean);
+}
+
+.field__checkbox[aria-invalid="true"] {
+  outline: 2px solid var(--color-error);
+  outline-offset: 2px;
+}
+
+.privacy-info {
+  grid-column: 1 / -1;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+}
+
+.privacy-info summary {
+  width: fit-content;
+  color: var(--color-ocean);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--color-champagne);
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.privacy-info p {
+  margin: var(--space-2) 0 0;
+}
+
+.contact-form__summary {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border-left: 3px solid var(--color-error);
+  background-color: var(--color-error-bg);
+  color: var(--color-error);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.contact-form__actions .btn {
+  width: 100%;
+}
+
+/* Confirmación ficticia */
+.contact-success {
+  padding-block: var(--space-5);
+  text-align: center;
+}
+
+.contact-success:focus {
+  outline: none;
+}
+
+.contact-success__icon {
+  margin: 0 auto var(--space-4);
+  color: var(--color-ocean);
+}
+
+.contact-success__title {
+  margin-bottom: var(--space-3);
+  font-size: 1.75rem;
+}
+
+.contact-success__note {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.contact-success form {
+  margin-top: var(--space-5);
+}
+
 /* ---------- Servicios ---------- */
 .services {
   display: grid;
