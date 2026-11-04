@@ -1,0 +1,603 @@
+/* ==========================================================================
+   Hotel Atlántico · Estilos
+   Mobile-first: estilos base para móvil y ampliaciones en 640, 768 y 1024 px.
+   ========================================================================== */
+
+/* ---------- Variables (paleta corporativa y escalas) ---------- */
+:root {
+  /* Paleta corporativa */
+  --color-ocean: #123B50;      /* Azul océano */
+  --color-champagne: #D5B98C;  /* Champán */
+  --color-ivory: #F5F2EB;      /* Marfil */
+  --color-graphite: #263238;   /* Grafito */
+
+  /* Usos semánticos */
+  --color-bg: var(--color-ivory);
+  --color-surface: #FFFFFF;
+  --color-text: var(--color-graphite);
+  --color-text-muted: #55616A;
+  --color-heading: var(--color-ocean);
+  --color-accent-dark: #7A5A2C; /* champán oscurecido para texto sobre marfil */
+  --color-border: #E3DDD0;
+  --color-tint: #ECE6DA;
+  --color-error: #B3261E;       /* rojo para errores del formulario (6,5:1 sobre blanco) */
+  --color-error-bg: #FBEFED;
+
+  /* Tipografía (fuentes del sistema: sin peticiones externas) */
+  --font-sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+
+  /* Escala de espaciado */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  --radius: 4px;
+  --container: 72rem;
+  --header-height: 7.5rem; /* en móvil la cabecera ocupa dos filas */
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  color: var(--color-heading);
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+p {
+  margin: 0 0 var(--space-4);
+}
+
+a {
+  color: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+address {
+  font-style: normal;
+}
+
+figure {
+  margin: 0;
+}
+
+/* Los anclajes no quedan tapados por la cabecera fija */
+[id] {
+  scroll-margin-top: var(--header-height);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ocean);
+  outline-offset: 3px;
+}
+
+/* Sobre fondos azules el foco va en champán para que se vea */
+.site-header :focus-visible,
+.hero :focus-visible,
+.feature :focus-visible,
+.site-footer :focus-visible {
+  outline-color: var(--color-champagne);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 100;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-champagne);
+  color: var(--color-ocean);
+  font-weight: 600;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn--primary {
+  background-color: var(--color-champagne);
+  color: var(--color-ocean);
+}
+
+.btn--primary:hover {
+  background-color: #E2CCA6;
+}
+
+.btn--ghost {
+  border-color: rgba(245, 242, 235, 0.8);
+  color: var(--color-ivory);
+}
+
+.btn--ghost:hover {
+  background-color: rgba(245, 242, 235, 0.12);
+}
+
+.btn--outline {
+  border-color: var(--color-ocean);
+  color: var(--color-ocean);
+}
+
+.btn--outline:hover {
+  background-color: var(--color-ocean);
+  color: var(--color-ivory);
+}
+
+.btn--large {
+  min-height: 3.25rem;
+  padding-inline: var(--space-6);
+}
+
+/* ---------- Logotipo textual ---------- */
+.brand {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  color: var(--color-ivory);
+  line-height: 1;
+  text-decoration: none;
+}
+
+.brand__kicker {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-champagne);
+}
+
+.brand__name {
+  margin-top: var(--space-1);
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+}
+
+.brand__stars {
+  margin-top: var(--space-1);
+  font-size: 0.5625rem;
+  letter-spacing: 0.3em;
+  color: var(--color-champagne);
+}
+
+/* ---------- Cabecera ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--color-ocean);
+  border-bottom: 1px solid rgba(213, 185, 140, 0.25);
+}
+
+.site-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-5);
+  padding-block: var(--space-3);
+}
+
+/* En móvil el botón de la cabecera se oculta: el de la portada queda a la vista */
+.site-header__cta {
+  display: none;
+}
+
+.main-nav {
+  width: 100%;
+}
+
+/* En móvil los cinco enlaces van en una fila; por debajo de 400 px
+   (con la negrita ya no caben) pasan a dos filas centradas.
+   El menú hamburguesa llegará con script.js */
+.main-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0 var(--space-2);
+}
+
+.main-nav__list a {
+  display: inline-block;
+  padding-block: var(--space-2);
+  color: var(--color-ivory);
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.main-nav__list a:hover {
+  color: var(--color-champagne);
+  border-bottom-color: var(--color-champagne);
+}
+
+/* Con JS la cabecera flota transparente sobre la portada y se vuelve
+   sólida al bajar (clase --solid desde script.js). Sin JS queda sólida. */
+.js .site-header {
+  position: fixed;
+  inset-inline: 0;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.js .site-header:not(.site-header--solid) {
+  background-color: transparent;
+  border-bottom-color: transparent;
+}
+
+/* Sombra en los enlaces del menú mientras flotan sobre la foto */
+.js .site-header:not(.site-header--solid) .main-nav__list a,
+.js .site-header:not(.site-header--solid) .brand {
+  text-shadow: 0 1px 8px rgba(18, 59, 80, 0.9);
+}
+
+/* Sobre la foto ya está el botón de la portada: no se duplica */
+.js .site-header:not(.site-header--solid) .site-header__cta {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* ---------- Portada (hero) ---------- */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background-color: var(--color-ocean); /* respaldo mientras carga la foto */
+  color: var(--color-ivory);
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 45%; /* mantiene el horizonte del mar a la vista */
+  animation: hero-zoom 18s ease-out both;
+}
+
+/* Velo arriba (legibilidad del menú) y abajo (titular); el centro,
+   donde está el mar, queda limpio */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to right,
+      rgba(18, 59, 80, 0.45) 0%,
+      rgba(18, 59, 80, 0) 55%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(18, 59, 80, 0.7) 0%,
+      rgba(18, 59, 80, 0) 22%
+    ),
+    linear-gradient(
+      to top,
+      rgba(18, 59, 80, 0.9) 0%,
+      rgba(18, 59, 80, 0.55) 30%,
+      rgba(18, 59, 80, 0) 60%
+    );
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  padding-block: calc(var(--header-height) + var(--space-5)) var(--space-9);
+  animation: hero-rise 1.2s 0.3s ease-out both;
+}
+
+/* El antetítulo cae sobre el cielo claro: va en una etiqueta con fondo
+   océano para que contraste con cualquier zona de la foto */
+.hero .eyebrow {
+  display: inline-block;
+  margin-bottom: var(--space-4);
+  padding: var(--space-2) var(--space-4);
+  background-color: rgba(18, 59, 80, 0.78);
+  border: 1px solid rgba(213, 185, 140, 0.5);
+  border-radius: var(--radius);
+  color: var(--color-ivory);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.hero__title {
+  text-shadow: 0 2px 16px rgba(18, 59, 80, 0.55);
+}
+
+.eyebrow {
+  margin-bottom: var(--space-3);
+  color: var(--color-champagne);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.eyebrow--dark {
+  color: var(--color-accent-dark);
+}
+
+.hero__title {
+  max-width: 14ch;
+  margin-bottom: var(--space-6);
+  color: var(--color-ivory);
+  /* crece con el ancho, pero sin pasar del 12 % de la altura en pantallas bajas */
+  font-size: clamp(2.5rem, min(9vw, 12vh), 6rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: var(--space-5);
+  left: 50%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  color: var(--color-ivory);
+  font-size: 0.6875rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transform: translateX(-50%);
+  opacity: 0.85;
+}
+
+.hero__scroll:hover {
+  opacity: 1;
+}
+
+.hero__scroll svg {
+  animation: hero-bob 2.4s ease-in-out infinite;
+}
+
+@keyframes hero-zoom {
+  from { transform: scale(1.12); }
+  to   { transform: scale(1); }
+}
+
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(1.5rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hero-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(4px); }
+}
+
+/* ---------- Secciones ---------- */
+.section {
+  padding-block: var(--space-8);
+}
+
+.section--tinted {
+  background-color: var(--color-tint);
+}
+
+.section__header {
+  max-width: 40rem;
+  margin-bottom: var(--space-6);
+}
+
+.section__title {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  margin-bottom: var(--space-4);
+}
+
+.section__lead {
+  color: var(--color-text-muted);
+}
+
+.section__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.note {
+  margin-top: var(--space-5);
+  margin-bottom: 0;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+/* ---------- Presentación ---------- */
+.intro__grid {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+
+.facts__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.facts__value {
+  color: var(--color-ocean);
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  line-height: 1.1;
+}
+
+.facts__label {
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+}
+
+.intro__media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.intro__media figcaption {
+  margin-top: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+}
+
+/* ---------- Pie de página ---------- */
+.site-footer {
+  padding-top: var(--space-8);
+  background-color: var(--color-ocean);
+  color: rgba(245, 242, 235, 0.85);
+  font-size: 0.9375rem;
+}
+
+.site-footer__grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.brand--footer {
+  margin-bottom: var(--space-4);
+}
+
+.site-footer__title {
+  margin-bottom: var(--space-3);
+  color: var(--color-champagne);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.site-footer__contact p {
+  margin-bottom: var(--space-2);
+}
+
+.site-footer a {
+  color: var(--color-ivory);
+  text-decoration-color: rgba(213, 185, 140, 0.6);
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.site-footer a:hover {
+  color: var(--color-champagne);
+}
+
+.site-footer__list li {
+  margin-bottom: var(--space-2);
+}
+
+.site-footer__bottom {
+  margin-top: var(--space-7);
+  padding-block: var(--space-5);
+  border-top: 1px solid rgba(213, 185, 140, 0.25);
+  font-size: 0.8125rem;
+}
+
+.site-footer__bottom p {
+  margin: 0;
+}
+

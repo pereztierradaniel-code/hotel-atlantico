@@ -4,9 +4,134 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hotel Atlántico · Hotel de cuatro estrellas frente al mar en A Coruña</title>
+  <meta name="description" content="Hotel Atlántico, hotel de cuatro estrellas frente al mar en A Coruña. 28 habitaciones, restaurante de cocina gallega y terraza con vistas al océano.">
+  <meta name="theme-color" content="#123B50">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23123B50'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' text-anchor='middle' fill='%23D5B98C'%3EA%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Cabecera: logotipo textual, menú y botón de disponibilidad -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="#inicio" aria-label="Hotel Atlántico, ir al inicio">
+        <span class="brand__kicker">Hotel</span>
+        <span class="brand__name">Atlántico</span>
+        <span class="brand__stars" aria-hidden="true">★★★★</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="main-nav__list" role="list">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#habitaciones">Habitaciones</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#restaurante">Restaurante</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--primary site-header__cta" href="#contacto" data-contact>Consultar disponibilidad</a>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- Inicio: imagen protagonista del océano y mensaje breve -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero__media">
+        <img class="hero__image"
+             src="assets/images/terraza"
+             alt="Terraza del hotel con sofás y sombrillas frente al océano Atlántico"
+             width="1300" height="860"
+             fetchpriority="high">
+      </div>
+      <div class="container hero__content">
+        <p class="eyebrow">Hotel ★★★★ · A Coruña</p>
+        <h1 id="hero-title" class="hero__title">Despierta frente al Atlántico</h1>
+        <a class="btn btn--primary btn--large" href="#contacto" data-contact>Consultar disponibilidad</a>
+      </div>
+      <a class="hero__scroll" href="#el-hotel">
+        <span>Descubre</span>
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+    </section>
+
+    <!-- Presentación del establecimiento -->
+    <section class="section intro" id="el-hotel" aria-labelledby="intro-title">
+      <div class="container intro__grid">
+        <div class="intro__text">
+          <p class="eyebrow eyebrow--dark">El hotel</p>
+          <h2 id="intro-title" class="section__title">Un refugio frente al Atlántico</h2>
+          <p>El Hotel Atlántico es un hotel de cuatro estrellas situado frente al mar en A Coruña. Sus 28 habitaciones, su restaurante de cocina gallega y su terraza con vistas al océano invitan a bajar el ritmo y disfrutar de Galicia sin prisas.</p>
+          <p>Cuidamos cada estancia con una atención cercana y personalizada, tanto si nos visitas desde cualquier lugar de España como desde el extranjero.</p>
+
+          <ul class="facts" role="list" aria-label="Datos del hotel">
+            <li class="facts__item"><span class="facts__value">28</span><span class="facts__label">habitaciones</span></li>
+            <li class="facts__item"><span class="facts__value">24 h</span><span class="facts__label">recepción</span></li>
+            <li class="facts__item"><span class="facts__value">15:00</span><span class="facts__label">check-in desde</span></li>
+            <li class="facts__item"><span class="facts__value">12:00</span><span class="facts__label">check-out hasta</span></li>
+          </ul>
+        </div>
+
+        <figure class="intro__media">
+          <img src="assets/images/imagen%20principal"
+               alt="Fachada del Hotel Atlántico, de madera y blanco con grandes ventanales, al atardecer"
+               width="2500" height="1666"
+               loading="lazy">
+          <figcaption>El hotel al atardecer</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie de página con información de contacto -->
+  <footer class="site-footer" id="contacto">
+    <div class="container site-footer__grid">
+      <div class="site-footer__brand">
+        <p class="brand brand--footer">
+          <span class="brand__kicker">Hotel</span>
+          <span class="brand__name">Atlántico</span>
+          <span class="brand__stars" aria-hidden="true">★★★★</span>
+        </p>
+        <p>Hotel de cuatro estrellas frente al mar en A Coruña, Galicia.</p>
+      </div>
+
+      <div>
+        <h2 class="site-footer__title">Contacto</h2>
+        <address class="site-footer__contact">
+          <p>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Avenida+del+Mar+25+A+Coru%C3%B1a" target="_blank" rel="noopener noreferrer">Avenida del Mar, 25, A Coruña<span class="visually-hidden"> (abre Google Maps en una pestaña nueva)</span></a>
+          </p>
+          <p><a href="tel:+34981000000">+34 981 000 000</a></p>
+          <p><a href="mailto:reservas@hotelatlantico.example">reservas@hotelatlantico.example</a></p>
+        </address>
+      </div>
+
+      <div>
+        <h2 class="site-footer__title">Información útil</h2>
+        <ul class="site-footer__list" role="list">
+          <li>Recepción 24 horas</li>
+          <li>Check-in desde las 15:00</li>
+          <li>Check-out hasta las 12:00</li>
+          <li>Atención en español e inglés</li>
+        </ul>
+      </div>
+
+      <nav aria-label="Navegación del pie">
+        <h2 class="site-footer__title">Navegación</h2>
+        <ul class="site-footer__list" role="list">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#habitaciones">Habitaciones</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#restaurante">Restaurante</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="container site-footer__bottom">
+      <p>© 2026 Hotel Atlántico. Web informativa: no se realizan reservas ni pagos en línea.</p>
+    </div>
+  </footer>
 </body>
 </html>
