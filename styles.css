@@ -1173,3 +1173,168 @@ body:has(.room-dialog[open], .contact-dialog[open]) {
   margin: 0;
 }
 
+/* ==========================================================================
+   Ampliaciones por tamaño de pantalla
+   ========================================================================== */
+
+/* Móvil estrecho: con el menú en negrita los cinco enlaces van en dos filas */
+@media (max-width: 399px) {
+  :root {
+    --header-height: 10rem;
+  }
+
+  .main-nav__list {
+    justify-content: center;
+    column-gap: var(--space-4);
+  }
+}
+
+/* Móvil grande */
+@media (min-width: 640px) {
+  .room-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .facts {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .site-footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .room-dialog__services {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .room-dialog__cta {
+    width: auto;
+  }
+
+  /* Formulario a dos columnas; mensaje, casilla y botón ocupan el ancho */
+  .contact-dialog__body {
+    padding: var(--space-7);
+  }
+
+  .contact-form {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5) var(--space-4);
+  }
+
+  .field--full {
+    grid-column: 1 / -1;
+  }
+
+  .contact-form__actions .btn {
+    width: auto;
+  }
+}
+
+/* Tablet: cabecera en una fila con botón */
+@media (min-width: 768px) {
+  :root {
+    --header-height: 5rem;
+  }
+
+  .site-header__inner {
+    flex-wrap: nowrap;
+  }
+
+  .main-nav {
+    width: auto;
+    margin-left: auto;
+  }
+
+  .main-nav__list {
+    gap: var(--space-5);
+  }
+
+  .main-nav__list a {
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+  }
+
+  .section {
+    padding-block: var(--space-9);
+  }
+
+  .service-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Escritorio */
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: var(--space-6);
+  }
+
+  .site-header__cta {
+    display: inline-flex;
+  }
+
+  .intro__grid {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+    gap: var(--space-8);
+  }
+
+  .room-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .services {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+  }
+
+  .service-list {
+    grid-template-columns: 1fr;
+  }
+
+  /* Ficha en dos columnas: la foto ocupa la izquierda entera y solo
+     se desplaza el texto de la derecha */
+  .room-dialog {
+    height: min(46rem, calc(100% - var(--space-6)));
+    overflow: hidden;
+  }
+
+  .room-dialog__inner {
+    grid-template-columns: 5fr 6fr;
+    grid-template-rows: 100%;
+    height: 100%;
+  }
+
+  .room-dialog__image {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  .room-dialog__body {
+    padding: var(--space-7);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .room-dialog__services {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer__grid {
+    grid-template-columns: 1.4fr 1fr 1fr 0.8fr;
+  }
+}
+
+/* Movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
